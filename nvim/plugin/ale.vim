@@ -1,10 +1,14 @@
 let g:ale_linters = {
 \   'javascript': ['eslint', 'flow'],
-\   'html': []
+\   'html': ['tidy'],
+\   'python': ['flake8', 'pylint'],
+\   'java': ['checkstyle', 'javac']
 \}
 
 let g:ale_fixers = {
-\   'javascript': ['eslint']
+\   'javascript': ['eslint'],
+\   'python': ['autopep8','isort', 'yapf'],
+\   'java': ['google_java_format']
 \}
 
 nmap <leader>d <Plug>(ale_fix)
@@ -18,3 +22,9 @@ hi ALEWarningSign guifg=#F2C38F
 " Use ALT-k and ALT-j to navigate errors
 nmap <silent> ˚ <Plug>(ale_previous_wrap)
 nmap <silent> ∆ <Plug>(ale_next_wrap)
+
+" Do not lint or fix minified files
+let g:ale_pattern_options = {
+\ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
+\ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+\}

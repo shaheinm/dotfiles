@@ -1,4 +1,4 @@
-" Disable linters, since Neomake will handle linting instead
+" Disable linters, since ALE will handle linting
 let g:pymode_lint_checkers = []
 
 " Use Ctrl-] to look up the definition of some variable/method, just like in

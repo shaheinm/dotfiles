@@ -15,21 +15,6 @@ fi
 
 echo ""
 
-# -- rbenv ---------------------------------------------------------------------
-
-if exists "rbenv"; then
-  echo_item "rbenv is already installed" green
-else
-  if get_boolean_response "Do you want to install rbenv?"; then
-    brew install rbenv ruby-install
-    rbenv rehash
-  else
-    echo_item "Skipping rbenv install" red
-  fi
-fi
-
-echo ""
-
 # -- npm -----------------------------------------------------------------------
 
 if exists "npm"; then

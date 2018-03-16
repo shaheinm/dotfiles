@@ -1,7 +1,7 @@
 {
     // Editor Style
-    "editor.fontFamily": "Hasklig",
-    "editor.tabSize": 2,
+    "editor.fontFamily": "Hack Nerd Font Mono",
+    "editor.tabSize": 4,
 
     // Fuzzy Finder
     "files.exclude": {

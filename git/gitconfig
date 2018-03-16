@@ -1,7 +1,6 @@
 [user]
   editor = /usr/local/bin/nvim
-  email = alex@lafroscia.com
-  name = Alex LaFroscia
+  name = Shahein Moussavi
 
 [alias]
   # Add
@@ -56,8 +55,8 @@
   r = !GIT_NO_PAGER=1 git l -30
   ra = !git r --all
   la = !git l --all
-  hp = "!. $DOTFILES/git/githelpers && show_git_head"
-  l = "!. $DOTFILES/git/githelpers && pretty_git_log"
+  hp = "!. ~/git/githelpers && show_git_head"
+  l = "!. ~/git/githelpers && pretty_git_log"
 
   # Sync
   sync = plu && pso
@@ -157,7 +156,7 @@
   required = true
 
 [github]
-  user = alexlafroscia
+  user = shaheinm
 
 [credential]
   helper = osxkeychain
