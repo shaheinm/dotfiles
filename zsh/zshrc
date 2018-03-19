@@ -1,3 +1,6 @@
+export PATH=$HOME/bin:/usr/local/bin:$HOME/Library/Python/3.6/bin:$PATH
+
+export CLICOLOR=1
 # -- Dotfiles Directory --------------------------------------------------------
 export XDG_CONFIG_HOME="$HOME/.config"
 export DOTFILES="$HOME/.dotfiles"
@@ -16,12 +19,10 @@ ZSH_CUSTOM="$DOTFILES/zsh/custom"
 fpath=( "$DOTFILES/zsh/custom" $fpath)
 
 # -- Theme ---------------------------------------------------------------------
-export NVIM_TUI_ENABLE_TRUE_COLOR=1
-ZSH_THEME="pure"
+ZSH_THEME=""
 
 # -- ZSH Plugins ---------------------------------------------------------------
-plugins=(git tmux npm bower vi-mode pj zsh-syntax-highlighting)
-if exists "virtualenvwrapper"; then plugins+=virtualenvwrapper; fi
+plugins=(git)
 
 fpath=($DOTFILES/zsh/custom/completion $fpath)
 
@@ -33,6 +34,10 @@ fi
 
 # -- Oh My Zsh -----------------------------------------------------------------
 source $ZSH/oh-my-zsh.sh
+
+# -- Load Pure Prompt ----------------------------------------------------------
+autoload -U promptinit; promptinit
+prompt pure
 
 # -- Named Directories ---------------------------------------------------------
 unsetopt auto_name_dirs
@@ -52,6 +57,7 @@ unsetopt correct
 export EDITOR="$(brew --prefix)/bin/nvim"
 alias vim=nvim
 alias vi=nvim
+alias ls="ls -FAl"
 alias dm=docker-machine
 alias dc=docker-compose
 alias docker-cleanup=docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm
@@ -64,15 +70,6 @@ fi
 if [[ -f "$HOME/.aliases" ]]; then
     source $HOME/.aliases
 fi
-
-if exists "hub"; then alias git=hub; fi
-
-codeclimate() {
-  docker run --interactive --tty --rm --env CODE_PATH="$PWD" --volume "$PWD":/code --volume /var/run/docker.sock:/var/run/docker.sock --volume /tmp/cc:/tmp/cc codeclimate/codeclimate "$@"
-}
-
-export PATH="$PATH:/opt/vagrant/bin"
-export PATH="/usr/local/sbin:$HOME/bin:$PATH"
 
 # -- Functions -----------------------------------------------------------------
 
@@ -102,21 +99,12 @@ extract () {
 zstyle ':completion:*:*:hub:*' user-commands ${${(M)${(k)commands}:#git-*}/git-/}
 _git-delete-tag() { compadd "$@" $(git tag) }
 
-# -- Tmux ----------------------------------------------------------------------
-export DISABLE_AUTO_TITLE="true"
-alias tmux="tmux -2"
-
 # -- TheFuck -------------------------------------------------------------------
 #    https://github.com/nvbn/thefuck
 alias fuck='$(thefuck $(fc -ln -1))'
 
 # -- Add DOTFILES bin to PATH --------------------------------------------------
 export PATH="$PATH:$DOTFILES/bin"
-
-# -- Xiki ----------------------------------------------------------------------
-if [[ -f "$HOME/.xsh" ]]; then
-  source $HOME/.xsh
-fi
 
 # -- fzf -----------------------------------------------------------------------
 if [ -f ~/.fzf.zsh ]; then
@@ -147,11 +135,6 @@ local yarn_global_modules="$XDG_CONFIG_HOME/yarn/global/node_modules"
 if [[ -d "$yarn_global_modules/.bin" ]]; then
   export PATH="$PATH:$yarn_global_modules/.bin"
 fi
-
-# -- Go ------------------------------------------------------------------------
-# Add $GOTPATH/bin to the $PATH
-export GOPATH=$HOME/Code/go
-export PATH="$PATH:$GOPATH/bin"
 
 # -- Kubectl
 if exists "kubectl"; then
