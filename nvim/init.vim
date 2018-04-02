@@ -196,7 +196,6 @@ Plug 'mhartington/nvim-typescript',       { 'do': ':UpdateRemotePlugins' }
 
 " HTML {{{4
 Plug 'othree/html5.vim',                  { 'for': 'html' }
-Plug 'mustache/vim-mustache-handlebars'
 Plug 'mattn/emmet-vim'
 
 " CSS {{{4
@@ -224,6 +223,7 @@ Plug 'plasticboy/vim-markdown',           { 'for': 'markdown' }
 Plug 'artur-shaik/vim-javacomplete2'
 
 call plug#end()
+
 " Load plugin configurations {{{2
 " For some reason, a few plugins seem to have config options that cannot be
 " placed in the `plugins` directory. Those settings can be found here instead.
