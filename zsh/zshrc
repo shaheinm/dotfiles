@@ -61,6 +61,8 @@ alias ls="ls -FAl"
 alias dm=docker-machine
 alias dc=docker-compose
 alias docker-cleanup=docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm
+alias work="cd ~/dev"
+alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 
 # -- Aliases -------------------------------------------------------------------
 if [[ -f "$DOTFILES/aliases" ]]; then

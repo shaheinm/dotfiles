@@ -25,13 +25,22 @@ let g:nerdtree_tabs_focus_on_files = 1
 " Make nerdtree look nice
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
-let g:NERDTreeWinSize = 30
+let g:NERDTreeWinSize = 35
 
 " faster bookmarking in NERDTree
 autocmd Filetype nerdtree nnoremap <buffer> <leader>B :Bookmark<space>
 autocmd Filetype nerdtree nnoremap <buffer> <leader>b :Bookmark<space><CR>
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeShowBookmarks = 1
+
+" Open NERDTree by default with no command line args
+autocmd vimenter * NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+" Close NERDTree if it is the only thing left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " NERDTree's File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)

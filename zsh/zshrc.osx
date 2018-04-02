@@ -1,5 +1,8 @@
-# -- ant -----------------------------------------------------------------------
-export ANT_ROOT="$(brew --prefix ant)/bin"
+# -- afk alias -----------------------------------------------------------------
+alias afk="open -a /System/Library/CoreServices/ScreenSaverEngine.app"
+
+# -- sublime -------------------------------------------------------------------
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
 # -- `ondir` configuration -----------------------------------------------------
 function chpwd() {

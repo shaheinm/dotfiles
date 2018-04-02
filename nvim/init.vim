@@ -15,8 +15,8 @@ set autowrite     " Automatically :write before running commands
 set noshowmode
 set timeoutlen=1000
 set ttimeoutlen=0
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set shiftround
 set expandtab
 set scrolloff=3
@@ -93,6 +93,7 @@ if has("autocmd")
   autocmd BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc set ft=json
 
   autocmd BufRead,BufNewFile gitconfig set ft=.gitconfig
+
 endif
 " }}}1
 " Section: External Functions {{{
@@ -156,6 +157,7 @@ Plug 'jasonlong/vim-textobj-css'
 Plug 'Konfekt/FastFold'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'simnalamburt/vim-mundo'
+Plug 'scrooloose/nerdcommenter'
 
 " Git
 Plug 'tpope/vim-fugitive'                 " Git stuff in Vim

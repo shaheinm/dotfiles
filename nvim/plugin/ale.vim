@@ -6,7 +6,7 @@ let g:ale_linters = {
 \}
 
 let g:ale_fixers = {
-\   'javascript': ['eslint'],
+\   'javascript': ['eslint', 'prettier'],
 \   'python': ['autopep8','isort', 'yapf'],
 \   'java': ['google_java_format']
 \}
