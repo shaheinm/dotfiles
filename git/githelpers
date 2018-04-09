@@ -69,3 +69,10 @@ pretty_git_log() {
             less --quit-if-one-screen --no-init --RAW-CONTROL-CHARS --chop-long-lines --raw-control-chars
         fi
 }
+
+# Checkout every branch in the remote locally (useful for migration)
+gitpull() {
+  for branch in $(git branch --all | grep '^\s*remotes' | egrep --invert-match '(:?HEAD|master)$'); do
+    git branch --track "${branch##**/}" "$branch"
+  done
+}

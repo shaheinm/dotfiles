@@ -1,6 +1,7 @@
 [user]
   editor = /usr/local/bin/nvim
-  name = Shahein Moussavi
+	name = Shahein Moussavi
+	email = shahein.moussavi@turner.com
 
 [alias]
   # Add
@@ -45,6 +46,7 @@
   plom = pull --rebase origin master
   plu  = pull --rebase upstream
   plum = pull --rebase upstream master
+  pla = "!. ~/git/githelpers && gitpull"
 
   # Push
   pf   = push --force-with-lease
