@@ -194,6 +194,9 @@ Plug 'neovim/node-host',                  { 'do': 'npm install' }
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript',       { 'do': ':UpdateRemotePlugins' }
 
+" Handlebars {{{4
+Plug 'mustache/vim-mustache-handlebars'
+
 " HTML {{{4
 Plug 'othree/html5.vim',                  { 'for': 'html' }
 Plug 'mattn/emmet-vim'
