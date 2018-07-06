@@ -20,7 +20,10 @@ fpath=( "$DOTFILES/zsh/custom" $fpath)
 ZSH_THEME=""
 
 # -- ZSH Plugins ---------------------------------------------------------------
-plugins=(git)
+plugins=(
+  git
+  zsh-syntax-highlighting
+)
 
 fpath=($DOTFILES/zsh/custom/completion $fpath)
 
