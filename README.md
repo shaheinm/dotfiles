@@ -3,7 +3,7 @@
 
 My dotfile configuration. Originally forked from alexlafraoscia/dotfiles because I'm lazy sometimes.
 
-# Installing the doftiles
+# Installing the dotfiles
 
 1. Pull the project into your home directory
    ```bash
