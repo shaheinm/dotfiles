@@ -76,17 +76,6 @@ fi
 
 echo ""
 
-# -- TMUX ----------------------------------------------------------------------
-if get_boolean_response "Do you want to install the Tmux configuration file?"
-then
-  ln -sf $HOME/.dotfiles/tmux/tmux.conf $HOME/.tmux.conf
-  echo_item "Linked tmux configutation" "green"
-else
-  echo_item "Ignoring Tmux configuration" "red"
-fi
-
-echo ""
-
 # -- Node ----------------------------------------------------------------------
 
 if exists "nvm"; then
@@ -95,7 +84,7 @@ else
   if get_boolean_response "Do you want to install Node.js tools?"; then
     git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
     . $HOME/.nvm/nvm.sh
-    nvm alias default system
+    nvm alias default node
   else
     echo_item "Skipping Node.js tools install" red
   fi
@@ -106,8 +95,7 @@ echo ""
 # -- NEOVIM --------------------------------------------------------------------
 # Link the dotfiles
 
-# TODO: Ask if the user wants to copy the current configuration to a .local file
-if get_boolean_response "Do you want to install the Neoim configuration file?"
+if get_boolean_response "Do you want to install the Neovim configuration file?"
 then
   ln -sf $HOME/.dotfiles/nvim/init.vim $HOME/.config/nvim/init.vim
   echo_item "Linked Neovim configuration" "green"

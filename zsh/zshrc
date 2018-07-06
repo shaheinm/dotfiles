@@ -1,5 +1,3 @@
-export PATH=$HOME/bin:/usr/local/bin:$HOME/Library/Python/3.6/bin:$PATH
-
 export CLICOLOR=1
 # -- Dotfiles Directory --------------------------------------------------------
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -26,12 +24,6 @@ plugins=(git)
 
 fpath=($DOTFILES/zsh/custom/completion $fpath)
 
-# Add Homebrew completions to config if they can be found
-local brew_completions="$(brew --prefix)/share/zsh/site-functions"
-if [[ -d $brew_completions ]]; then
-  fpath=($fpath $brew_completions)
-fi
-
 # -- Oh My Zsh -----------------------------------------------------------------
 source $ZSH/oh-my-zsh.sh
 
@@ -54,13 +46,12 @@ unsetopt correct_all
 unsetopt correct
 
 # -- Variables -----------------------------------------------------------------
-export EDITOR="$(brew --prefix)/bin/nvim"
 alias vim=nvim
 alias vi=nvim
 alias ls="ls -FAl"
 alias dm=docker-machine
 alias dc=docker-compose
-alias docker-cleanup=docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm
+alias docker-cleanup='docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm'
 alias work="cd ~/dev"
 alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 
@@ -123,6 +114,7 @@ if [[ $(uname) == 'Darwin' ]]; then
   source $DOTFILES/zsh/zshrc.osx
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   # Load Linux config
+  source $DOTFILES/zsh/zshrc.linux
 fi
 
 # -- asdf ---------------------------------------------------------------------
@@ -131,12 +123,6 @@ if [[ -d "$HOME/.asdf" ]]; then
   source $HOME/.asdf/completions/asdf.bash
 fi
 
-# -- Yarn ---------------------------------------------------------------------
-# Make the shell aware of global packages installed by Yarn
-local yarn_global_modules="$XDG_CONFIG_HOME/yarn/global/node_modules"
-if [[ -d "$yarn_global_modules/.bin" ]]; then
-  export PATH="$PATH:$yarn_global_modules/.bin"
-fi
 
 # -- Kubectl
 if exists "kubectl"; then
