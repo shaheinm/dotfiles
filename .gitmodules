@@ -7,3 +7,6 @@
 [submodule "zsh/custom/pure"]
 	path = zsh/custom/pure
 	url = https://github.com/sindresorhus/pure.git
+[submodule "zsh/custom/zsh-nvm"]
+	path = zsh/custom/zsh-nvm
+	url = https://github.com/lukechilds/zsh-nvm

@@ -23,6 +23,7 @@ ZSH_THEME=""
 plugins=(
   git
   zsh-syntax-highlighting
+  zsh-nvm
 )
 
 fpath=($DOTFILES/zsh/custom/completion $fpath)
@@ -132,7 +133,13 @@ if exists "kubectl"; then
   source <(kubectl completion zsh)
 fi
 
+# -- jEnv ----------------------------------------------------------------------
+eval "$(jenv init -)"
+
 # -- Local Configuration (After Default) ---------------------------------------
 if [[ -f "$DOTFILES/zsh/zshrc.local" ]]; then
   source $DOTFILES/zsh/zshrc.local
 fi
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
