@@ -106,13 +106,14 @@ function! MarkedPreview()
 endfunction
 nnoremap <leader>md :call MarkedPreview()<CR>
 " }}}
-" Open current file in Sublime
+" Open current file in Sublime {{{
 function! SublimeText()
     :w
     exec ':silent !open -a "Sublime Text.app" ' . shellescape('%:p')
     redraw!
 endfunction
 nnoremap <leader>sb :call SublimeText()<CR>
+" }}}
 " }}}
 " Section: Load vim-plug plugins {{{
 

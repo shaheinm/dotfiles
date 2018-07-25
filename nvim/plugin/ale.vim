@@ -8,7 +8,8 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   'javascript': ['eslint', 'prettier'],
 \   'python': ['autopep8','isort', 'yapf'],
-\   'java': ['google_java_format']
+\   'java': ['google_java_format'],
+\   'json': ['jq', 'fixjson', 'prettier']
 \}
 
 nmap <leader>d <Plug>(ale_fix)
