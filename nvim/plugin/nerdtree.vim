@@ -20,7 +20,8 @@ let g:gitgutter_enabled = 0
 " Auto open nerd tree on startup
 let g:nerdtree_tabs_open_on_gui_startup = 0
 " Focus in the main content window
-let g:nerdtree_tabs_focus_on_files = 1
+autocmd VimEnter * wincmd l
+autocmd BufNew   * wincmd l
 
 " Make nerdtree look nice
 let NERDTreeMinimalUI = 1

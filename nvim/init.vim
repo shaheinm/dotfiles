@@ -15,8 +15,8 @@ set autowrite     " Automatically :write before running commands
 set noshowmode
 set timeoutlen=1000
 set ttimeoutlen=0
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set shiftround
 set expandtab
 set scrolloff=3
@@ -55,8 +55,8 @@ endif " }}}2
 set splitbelow
 set splitright
 " Point python checker to homebrew installs` {{{2
-let g:python3_host_prog = '/usr/bin/python3'
-let g:python2_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python2_host_prog = '/usr/local/bin/python2'
 " }}}2
 " Configure grep to use The Silver Searcher {{{2
 if executable('ag')
@@ -67,6 +67,11 @@ if executable('ag')
 
   command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 endif
+" }}}2
+" Configure fzf in vim {{{2
+let g:rg_command = 'rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always" -g "!{.git,node_modules}" -g "*.{js,json,md,config,py,cpp,c,go,conf}" '
+
+command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 " }}}2
 " }}}1
 " Section: Autocommands {{{1

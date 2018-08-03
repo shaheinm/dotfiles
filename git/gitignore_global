@@ -39,3 +39,8 @@ Thumbs.db
 # Tern #
 ########
 .tern*
+
+# Node #
+########
+node_modules
+bower_components

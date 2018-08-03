@@ -110,6 +110,8 @@ if [ -f ~/.fzf.zsh ]; then
   export FZF_DEFAULT_OPTS='--color 16,info:6,hl:13,hl+:13'
   export FZF_DEFAULT_COMMAND="rg --files-with-matches --no-messages -F ''"
   export FZF_CTRL_T_COMMAND="rg --files-with-matches --no-messages --hidden -F '' | grep -v .git/"
+  export FZF_ALT_C_COMMAND="bfs -type d -nohidden"
+  bindkey -s '\C-l' 'vi $(fzf)^M'
 fi
 
 # -- OS-Specific Config --------------------------------------------------------

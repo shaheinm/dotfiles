@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:/usr/local/bin:$HOME/Library/Python/3.6/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$HOME/Library/Python/3.6/bin:$PATH
 
 # Add Homebrew completions to config if they can be found
 local brew_completions="$(brew --prefix)/share/zsh/site-functions"
@@ -22,7 +22,7 @@ eval "`ondir /`"
 
 # -- Add Homebrew zsh-completions & nvm ----------------------------------------
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $(brew --prefix nvm)/nvm.sh
+# source $(brew --prefix nvm)/nvm.sh
 
 # -- Yarn ---------------------------------------------------------------------
 # Make the shell aware of global packages installed by Yarn
