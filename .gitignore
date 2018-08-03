@@ -4,3 +4,8 @@
 # Ignore the "local" versions of files
 *.local
 *.local.*
+
+# Ignore nvim install files
+nvim/autoload
+nvim/plugged
+nvim/undo
