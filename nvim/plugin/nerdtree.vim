@@ -2,7 +2,7 @@
 noremap <Leader>n :NERDTreeToggle<cr>
 
 " Files to ignore
-" Array of regular expressions to match ommisions by
+" Array of regular expressions to match omissions by
 let NERDTreeIgnore = [
       \'\.class$',
       \'\.pyc$',
@@ -14,14 +14,8 @@ let NERDTreeIgnore = [
       \'^deps[[dir]]'
       \]
 
-let g:NERDSpaceDelims=1
-let g:gitgutter_enabled = 0
-
-" Auto open nerd tree on startup
-let g:nerdtree_tabs_open_on_gui_startup = 0
-" Focus in the main content window
-autocmd VimEnter * wincmd l
-autocmd BufNew   * wincmd l
+let g:NERDSpaceDelims = 1
+let g:gitgutter_enabled = 1
 
 " Make nerdtree look nice
 let NERDTreeMinimalUI = 1
@@ -34,13 +28,13 @@ autocmd Filetype nerdtree nnoremap <buffer> <leader>b :Bookmark<space><CR>
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeShowBookmarks = 1
 
-" Open NERDTree by default with no command line args
-autocmd vimenter * NERDTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+" Open NERDTree by default and with no command line args
+" autocmd vimenter * NERDTree
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
-" Close NERDTree if it is the only thing left open
+"Close NERDTree if it's all that's left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " NERDTree's File highlighting
