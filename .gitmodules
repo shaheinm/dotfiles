@@ -10,3 +10,6 @@
 [submodule "zsh/custom/zsh-nvm"]
 	path = zsh/custom/zsh-nvm
 	url = https://github.com/lukechilds/zsh-nvm
+[submodule "/Users/shaheinm/.dotfiles/nvim/bundle/vim-superman"]
+	path = /Users/shaheinm/.dotfiles/nvim/bundle/vim-superman
+	url = https://github.com/jez/vim-superman

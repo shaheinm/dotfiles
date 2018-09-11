@@ -133,6 +133,7 @@ Plug 'edkolev/tmuxline.vim'               " Make the Tmux bar match Vim
 Plug 'ryanoasis/vim-webdevicons'
 Plug 'junegunn/goyo.vim'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'jez/vim-superman'                   " Man pages in Vim
 
 " Project Navigation {{{3
 Plug 'junegunn/fzf',                      { 'dir': '~/.fzf', 'do': './install --all' }
