@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/shaheinm/GT-Coding-Bootcamp/FullStack-Lesson-Plans/01-Class-Content/03-javascript/01-Activities/05-PizzaConsole'
-let g:netrw_dirhist_2='/Users/shaheinm/GT-Coding-Bootcamp/FullStack-Lesson-Plans/01-Class-Content/03-javascript/01-Activities/05-PizzaConsole/Solved'
-let g:netrw_dirhist_3='/Users/shaheinm/GT-Coding-Bootcamp/FullStack-Lesson-Plans/01-Class-Content/04-jquery/01-Activities/17-ScopeQuiz'
