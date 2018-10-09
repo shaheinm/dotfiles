@@ -15,8 +15,8 @@ set autowrite     " Automatically :write before running commands
 set noshowmode
 set timeoutlen=1000
 set ttimeoutlen=0
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set shiftround
 set expandtab
 set scrolloff=3
@@ -220,9 +220,9 @@ Plug 'davidhalter/jedi-vim',              { 'for': 'python' }
 Plug 'alfredodeza/pytest.vim',            { 'for': 'python' }
 
 " Go {{{4
-Plug 'fatih/vim-go'
-Plug 'nsf/gocode',                        { 'rtp': 'nvim', 'do': './nvim/symlink.sh' }
-Plug 'zchee/deoplete-go'
+Plug 'fatih/vim-go',                      { 'do': ':GoUpdateBinaries' }
+Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+Plug 'zchee/deoplete-go',                 { 'do': 'make'}
 
 " Markdown {{{4
 Plug 'reedes/vim-pencil'                  " Markdown, Writing

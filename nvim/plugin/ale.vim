@@ -2,14 +2,16 @@ let g:ale_linters = {
 \   'javascript': ['eslint', 'flow'],
 \   'html': ['tidy'],
 \   'python': ['flake8', 'pylint'],
-\   'java': ['checkstyle', 'javac']
+\   'java': ['checkstyle', 'javac'],
+\   'go': ['golint']
 \}
 
 let g:ale_fixers = {
 \   'javascript': ['eslint', 'prettier'],
 \   'python': ['autopep8','isort', 'yapf'],
 \   'java': ['google_java_format'],
-\   'json': ['jq', 'fixjson', 'prettier']
+\   'json': ['jq', 'fixjson', 'prettier'],
+\   'go': ['gofmt', 'goimports']
 \}
 
 nmap <leader>d <Plug>(ale_fix)
