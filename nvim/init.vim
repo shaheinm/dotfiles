@@ -58,6 +58,11 @@ set splitright
 let g:python3_host_prog = '/usr/local/bin/python3'
 let g:python_host_prog = '/usr/local/bin/python2'
 " }}}2
+
+" Point node checker to homebrew installs` {{{2
+let g:node_host_prog = '/usr/local/bin/neovim-node-host'
+" }}}2
+
 " Configure grep to use The Silver Searcher {{{2
 if executable('ag')
   " Use ag over grep
@@ -65,7 +70,7 @@ if executable('ag')
 
   let g:ackprg='ag --vimgrep'
 
-  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+  command! -bang -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 endif
 " }}}2
 " Configure fzf in vim {{{2
@@ -184,7 +189,7 @@ Plug 'janko-m/vim-test'
 Plug 'Shougo/deoplete.nvim',              { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'carlitux/deoplete-ternjs'
-Plug 'alexlafroscia/deoplete-flow',       { 'branch': 'pass-filename-to-autocomplete' }
+Plug 'steelsojka/deoplete-flow'
 
 " Productivity
 Plug 'git://github.com/wakatime/vim-wakatime.git'
@@ -195,7 +200,6 @@ Plug 'SirVer/ultisnips'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'rhysd/npm-debug-log.vim'
-Plug 'neovim/node-host',                  { 'do': 'npm install' }
 
 " TypeScript {{{4
 Plug 'HerringtonDarkholme/yats.vim'
@@ -249,6 +253,7 @@ let g:user_emmet_settings = {
   \        'quote_char': "'"
   \    }
   \}
+
 
 " vim-javacomplete2 {{{3
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
