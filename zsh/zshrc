@@ -146,7 +146,7 @@ fi
 compdef vman="man"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.dotfiles/nvim/bundle/vim-superman/bin:$HOME/.rvm/bin"
+export PATH="$PATH:$HOME/.dotfiles/scripts/bin:$HOME/.dotfiles/nvim/bundle/vim-superman/bin:$HOME/.rvm/bin"
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`

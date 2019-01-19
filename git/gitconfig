@@ -87,13 +87,13 @@
   added = cyan
   changed = red
 [color "diff"]
-  meta = red bold
-  frag = black bold
+  meta = yellow
+  frag = magenta bold
   func = blue
-  old = red strike
-  new = cyan
-  commit = blue
-  whitespace = red
+  old = red bold
+  new = green bold
+  commit = yellow bold
+  whitespace = red reverse
   context = normal
 [color "branch"]
   current = cyan
@@ -148,6 +148,7 @@
 
 [core]
   excludesfile = ~/.gitignore_global
+  pager = diff-so-fancy | less --tabs=4 -RFX
 
 [rerere]
   enabled = 1

@@ -56,7 +56,7 @@ set splitbelow
 set splitright
 " Point python checker to homebrew installs` {{{2
 let g:python3_host_prog = '/usr/local/bin/python3'
-let g:python2_host_prog = '/usr/local/bin/python2'
+let g:python_host_prog = '/usr/local/bin/python2'
 " }}}2
 " Configure grep to use The Silver Searcher {{{2
 if executable('ag')

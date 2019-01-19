@@ -1,5 +1,6 @@
 call deoplete#enable()
 
+call deoplete#enable_logging("DEBUG", "~/tmp/nvimpy.log")
 let g:deoplete#ignore_sources = {}
 let g:deoplete#ignore_sources.go = ['around', 'buffer', 'member']
 let g:deoplete#ignore_sources.javascript = ['member']
