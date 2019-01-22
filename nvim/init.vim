@@ -132,6 +132,8 @@ call plug#begin()
 
 " UI {{{3
 Plug 'mhartington/oceanic-next'
+Plug 'sjl/badwolf'
+Plug 'abra/vim-obsidian'
 Plug 'vim-airline/vim-airline'            " Handy info
 Plug 'retorillo/airline-tablemode.vim'
 Plug 'edkolev/tmuxline.vim'               " Make the Tmux bar match Vim
@@ -348,6 +350,15 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 set background=dark
 colorscheme OceanicNext
+
+" Switch themes easily
+nnoremap <leader>1 :colorscheme OceanicNext<cr>
+nnoremap <leader>2 :colorscheme badwolf<cr>
+nnoremap <leader>3 :colorscheme obsidian<cr>
+
+" Badwolf stuff
+let g:badwolf_darkgutter = 1
+let g:badwolf_tabline = 2
 
 hi Folded ctermbg=NONE guibg=NONE ctermfg=014 guifg=#0087d7
 " Airline theme

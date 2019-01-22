@@ -144,9 +144,9 @@ if [[ -f "$DOTFILES/zsh/zshrc.local" ]]; then
 fi
 
 compdef vman="man"
-
+export GOPATH="$HOME/go"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.dotfiles/scripts/bin:$HOME/.dotfiles/nvim/bundle/vim-superman/bin:$HOME/.rvm/bin"
+export PATH="$PATH:$HOME/.dotfiles/scripts/bin:$HOME/.dotfiles/nvim/bundle/vim-superman/bin:$HOME/.rvm/bin:${GOPATH//://bin:}/bin"
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
