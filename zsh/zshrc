@@ -1,4 +1,5 @@
 export CLICOLOR=1
+export FULLDIR="true"
 # -- Dotfiles Directory --------------------------------------------------------
 export XDG_CONFIG_HOME="$HOME/.config"
 export DOTFILES="$HOME/.dotfiles"
@@ -59,6 +60,8 @@ alias dc=docker-compose
 alias docker-cleanup='docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm'
 alias work="cd ~/dev"
 alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
+alias tmi='export FULLDIR="false"'
+alias fulldir='export FULLDIR="true"'
 
 # -- Aliases -------------------------------------------------------------------
 if [[ -f "$DOTFILES/aliases" ]]; then
