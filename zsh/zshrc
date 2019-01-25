@@ -34,6 +34,7 @@ source $ZSH/oh-my-zsh.sh
 # -- Load Pure Prompt ----------------------------------------------------------
 autoload -U promptinit; promptinit
 prompt pure
+source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
 
 # -- Named Directories ---------------------------------------------------------
 unsetopt auto_name_dirs
