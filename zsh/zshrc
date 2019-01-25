@@ -135,6 +135,10 @@ if exists "kubectl"; then
   source <(kubectl completion zsh)
 fi
 
+if [[ -f "$HOME/.kubecontexts" ]]; then
+  source $HOME/.kubecontexts
+fi
+
 # -- jEnv ----------------------------------------------------------------------
 eval "$(jenv init -)"
 
