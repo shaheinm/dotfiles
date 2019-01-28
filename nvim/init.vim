@@ -203,10 +203,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'rhysd/npm-debug-log.vim'
 
-" TypeScript {{{4
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript',       { 'do': ':UpdateRemotePlugins' }
-
 " Handlebars {{{4
 Plug 'mustache/vim-mustache-handlebars'
 

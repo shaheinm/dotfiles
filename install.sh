@@ -27,6 +27,9 @@ then
 
   ln -sf $HOME/.dotfiles/git/gitconfig $HOME/.gitconfig
   echo_item "Linked gitconfig" "green"
+
+  ln -sf $HOME/.dotfiles/git/diff-so-fancy /usr/local/bin/diff-so-fancy
+  echo_item "Linked diff-so-fancy" "green"
 else
   echo_item "Ignoring Git configuration" red
 fi
