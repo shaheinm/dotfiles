@@ -57,7 +57,8 @@ if exists "zsh"; then
         echo_item "You need either curl or wget installed to download Oh My ZSH"
       fi
     fi
-
+    sudo mkdir -p /usr/local/opt/kube-ps1/share
+    sudo cp $HOME/.dotfiles/zsh/custom/kube-ps1/kube-ps1.sh /usr/local/opt/kube-ps1/share/kube-ps1.sh
   else
     echo_item "Ignoring ZSH configuration" "red"
   fi

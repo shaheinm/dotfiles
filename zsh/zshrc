@@ -128,7 +128,7 @@ fi
 if [[ $(uname) == 'Darwin' ]]; then
   # Load OSX config
   source $DOTFILES/zsh/zshrc.osx
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
   # Load Linux config
   source $DOTFILES/zsh/zshrc.linux
 fi

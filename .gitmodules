@@ -13,3 +13,9 @@
 [submodule "nvim/bundle/vim-superman"]
 	path = nvim/bundle/vim-superman
 	url = https://github.com/jez/vim-superman
+[submodule "zsh/custom/kube-ps1"]
+	path = zsh/custom/kube-ps1
+	url = git@github.com:jonmosco/kube-ps1.git
+[submodule "kube/kubectx"]
+	path = kube/kubectx
+	url = git@github.com:ahmetb/kubectx.git
