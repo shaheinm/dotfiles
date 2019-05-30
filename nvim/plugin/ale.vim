@@ -3,7 +3,8 @@ let g:ale_linters = {
 \   'html': ['tidy'],
 \   'python': ['flake8', 'pylint'],
 \   'java': ['checkstyle', 'javac'],
-\   'go': ['golint']
+\   'go': ['golint'],
+\   'vue': ['eslint']
 \}
 
 let g:ale_fixers = {
@@ -11,7 +12,8 @@ let g:ale_fixers = {
 \   'python': ['autopep8','isort', 'yapf'],
 \   'java': ['google_java_format'],
 \   'json': ['jq', 'fixjson', 'prettier'],
-\   'go': ['gofmt', 'goimports']
+\   'go': ['gofmt', 'goimports'],
+\   'vue': ['eslint', 'prettier']
 \}
 
 nmap <leader>d <Plug>(ale_fix)

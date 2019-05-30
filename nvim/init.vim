@@ -201,6 +201,7 @@ Plug 'SirVer/ultisnips'
 " JavaScript {{{4
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'posva/vim-vue'
 Plug 'rhysd/npm-debug-log.vim'
 
 " Handlebars {{{4
