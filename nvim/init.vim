@@ -124,6 +124,12 @@ function! SublimeText()
 endfunction
 nnoremap <leader>sb :call SublimeText()<CR>
 " }}}
+" Open current file in Chrome {{{
+function! OpenInChrome()
+  exec ':silent !open -a /Applications/Google\ Chrome.app %'
+endfunction
+nnoremap <leader>ch :call OpenInChrome()<CR>
+" }}}
 " }}}
 " Section: Load vim-plug plugins {{{
 

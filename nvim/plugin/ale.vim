@@ -14,6 +14,7 @@ let g:ale_fixers = {
 \   'json': ['jq', 'fixjson', 'prettier'],
 \   'go': ['gofmt', 'goimports'],
 \   'vue': ['eslint', 'prettier']
+\   'html': ['tidy', 'prettier']
 \}
 
 nmap <leader>d <Plug>(ale_fix)
