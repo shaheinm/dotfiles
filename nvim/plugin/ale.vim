@@ -13,7 +13,7 @@ let g:ale_fixers = {
 \   'java': ['google_java_format'],
 \   'json': ['jq', 'fixjson', 'prettier'],
 \   'go': ['gofmt', 'goimports'],
-\   'vue': ['eslint', 'prettier']
+\   'vue': ['eslint', 'prettier'],
 \   'html': ['tidy', 'prettier']
 \}
 
