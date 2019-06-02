@@ -12,5 +12,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+conda deactivate
 
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.jenv/bin:/usr/local/go/bin:$PATH
