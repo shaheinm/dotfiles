@@ -1,4 +1,5 @@
 export CLICOLOR=1
+export TERM=xterm-256color
 export FULLDIR="true"
 # -- Dotfiles Directory --------------------------------------------------------
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -33,6 +34,8 @@ fpath=($DOTFILES/zsh/custom/completion $fpath)
 source $ZSH/oh-my-zsh.sh
 
 # -- Load Pure Prompt ----------------------------------------------------------
+export PURE_PROMPT_SYMBOL='$'
+export PURE_PROMPT_PRE='%F{73}'
 autoload -U promptinit; promptinit
 prompt pure
 source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
@@ -54,8 +57,10 @@ unsetopt correct
 # -- Kube-PS1 ------------------------------------------------------------------
 export KUBE_PS1_PREFIX='{{'
 export KUBE_PS1_SUFFIX='}}'
-export KUBE_PS1_SEPARATOR='|'
-export KUBE_PS1_CTX_COLOR='magenta'
+export KUBE_PS1_DIVIDER='.'
+export KUBE_PS1_SYMBOL_ENABLE="false"
+export KUBE_PS1_CTX_COLOR='144'
+export KUBE_PS1_NS_COLOR='65'
 
 # -- Variables -----------------------------------------------------------------
 alias vim=nvim

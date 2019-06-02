@@ -137,12 +137,11 @@ nnoremap <leader>ch :call OpenInChrome()<CR>
 call plug#begin()
 
 " UI {{{3
-Plug 'mhartington/oceanic-next'
-Plug 'sjl/badwolf'
+Plug 'shaheinm/vim-deus'
 Plug 'abra/vim-obsidian'
 Plug 'vim-airline/vim-airline'            " Handy info
+Plug 'vim-airline/vim-airline-themes'            " Handy info
 Plug 'retorillo/airline-tablemode.vim'
-Plug 'edkolev/tmuxline.vim'               " Make the Tmux bar match Vim
 Plug 'ryanoasis/vim-webdevicons'
 Plug 'junegunn/goyo.vim'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -189,7 +188,6 @@ Plug 'jez/vim-github-hub'
 Plug 'tpope/vim-dispatch'                 " Run tasks asychronously in Tmux
 Plug 'w0rp/ale'                           " Linter
 Plug 'wincent/terminus'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'Olical/vim-enmasse'                 " Edit all files in a Quickfix list
 Plug 'janko-m/vim-test'
 
@@ -350,9 +348,13 @@ set completeopt-=preview
 
 syntax enable
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set t_Co=256
 set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set background=dark
-colorscheme OceanicNext
+colorscheme deus
+let g:deus_termcolors=256
 
 " Switch themes easily
 nnoremap <leader>1 :colorscheme OceanicNext<cr>
@@ -365,46 +367,5 @@ let g:badwolf_tabline = 2
 
 hi Folded ctermbg=NONE guibg=NONE ctermfg=014 guifg=#0087d7
 " Airline theme
-let g:airline_theme='oceanicnext'
+let g:airline_theme='deus'
 
-" Setup Terminal Colors For Neovim {{{
-if has('nvim')
-  " dark0 + gray
-  let g:terminal_color_0 = "#282828"
-  let g:terminal_color_8 = "#928374"
-
-  " neurtral_red + bright_red
-  let g:terminal_color_1 = "#cc241d"
-  let g:terminal_color_9 = "#fb4934"
-
-  " neutral_green + bright_green
-  let g:terminal_color_2 = "#98971a"
-  let g:terminal_color_10 = "#b8bb26"
-
-  " neutral_yellow + bright_yellow
-  let g:terminal_color_3 = "#d79921"
-  let g:terminal_color_11 = "#fabd2f"
-
-  " neutral_blue + bright_blue
-  let g:terminal_color_4 = "#458588"
-  let g:terminal_color_12 = "#83a598"
-
-  " neutral_purple + bright_purple
-  let g:terminal_color_5 = "#b16286"
-  let g:terminal_color_13 = "#d3869b"
-
-  " neutral_aqua + faded_aqua
-  let g:terminal_color_6 = "#689d6a"
-  let g:terminal_color_14 = "#8ec07c"
-
-  " light4 + light1
-  let g:terminal_color_7 = "#a89984"
-  let g:terminal_color_15 = "#ebdbb2"
-endif " }}}
-" }}}
-" Section: Local-Machine Config {{{
-
-if filereadable($DOTFILES . "/nvim/init.local.vim")
-  source $DOTFILES/nvim/init.local.vim
-endif
-" }}}
