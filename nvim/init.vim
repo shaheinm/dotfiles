@@ -42,25 +42,12 @@ set incsearch
 set undofile
 set undodir=~/.config/nvim/undo
 
-" Make it obvious where 120 characters is {{{2
-" Lifted from StackOverflow user Jeremy W. Sherman
-" http://stackoverflow.com/a/3765575/2250435
-if exists('+colorcolumn')
-  set textwidth=120
-  set colorcolumn=+1
-else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>120v.\+', -1)
-endif " }}}2
 " Open new split panes to right and bottom, which feels more natural {{{2
 set splitbelow
 set splitright
 " Point python checker to homebrew installs` {{{2
-let g:python3_host_prog = '/usr/local/bin/python3'
-let g:python_host_prog = '/usr/local/bin/python2'
-" }}}2
-
-" Point node checker to homebrew installs` {{{2
-let g:node_host_prog = '/usr/local/bin/neovim-node-host'
+let g:python3_host_prog = '/usr/bin/python3'
+let g:python_host_prog = '/usr/bin/python2'
 " }}}2
 
 " Configure grep to use The Silver Searcher {{{2
@@ -138,7 +125,7 @@ call plug#begin()
 
 " UI {{{3
 Plug 'shaheinm/vim-deus'
-Plug 'abra/vim-obsidian'
+Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline'            " Handy info
 Plug 'vim-airline/vim-airline-themes'            " Handy info
 Plug 'retorillo/airline-tablemode.vim'
@@ -317,8 +304,6 @@ nnoremap tn :tabnew<CR>
 nnoremap tc :CtrlSpaceTabLabel<CR>
 nnoremap td :tabclose<CR>
 
-nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-
 " EasyMotion config {{{3
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
@@ -356,16 +341,16 @@ set background=dark
 colorscheme deus
 let g:deus_termcolors=256
 
-" Switch themes easily
-nnoremap <leader>1 :colorscheme OceanicNext<cr>
-nnoremap <leader>2 :colorscheme badwolf<cr>
-nnoremap <leader>3 :colorscheme obsidian<cr>
-
-" Badwolf stuff
-let g:badwolf_darkgutter = 1
-let g:badwolf_tabline = 2
-
 hi Folded ctermbg=NONE guibg=NONE ctermfg=014 guifg=#0087d7
 " Airline theme
 let g:airline_theme='deus'
+
+" Section: Local-Machine Config {{{
+
+if filereadable($DOTFILES . "/nvim/init.local.vim")
+  source $DOTFILES/nvim/init.local.vim
+endif
+" }}}
+
+set fillchars+=vert:\.
 
