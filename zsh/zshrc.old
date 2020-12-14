@@ -1,16 +1,10 @@
-# # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# # Initialization code that may require console input (password prompts, [y/n]
-# # confirmations, etc.) must go above this block, everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  # source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
 export CLICOLOR=1
 export TERM=xterm-256color
 export FULLDIR="true"
 # -- Dotfiles Directory --------------------------------------------------------
 export XDG_CONFIG_HOME="$HOME/.config"
 export DOTFILES="$HOME/.dotfiles"
+
 # Helper scripts
 source "$DOTFILES/scripts/helpers/functions.sh"
 
@@ -25,12 +19,13 @@ ZSH_CUSTOM="$DOTFILES/zsh/custom"
 fpath=( "$DOTFILES/zsh/custom" $fpath)
 
 # -- Theme ---------------------------------------------------------------------
-ZSH_THEME=""
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # -- ZSH Plugins ---------------------------------------------------------------
 plugins=(
   git
   zsh-syntax-highlighting
+  zsh-nvm
 )
 
 fpath=($DOTFILES/zsh/custom/completion $fpath)
@@ -39,10 +34,10 @@ fpath=($DOTFILES/zsh/custom/completion $fpath)
 source $ZSH/oh-my-zsh.sh
 
 # -- Load Pure Prompt ----------------------------------------------------------
-export PURE_PROMPT_SYMBOL='$'
-export PURE_PROMPT_PRE='%F{166}[%n@%m] '
-autoload -U promptinit; promptinit
-prompt pure
+#export PURE_PROMPT_SYMBOL='$'
+#export PURE_PROMPT_PRE='%F{73}shahein at zsh '
+#autoload -U promptinit; promptinit
+#prompt pure
 
 # -- Named Directories ---------------------------------------------------------
 unsetopt auto_name_dirs
@@ -157,9 +152,8 @@ fi
 
 compdef vman="man"
 export GOPATH="$HOME/go"
-export GO111MODULE=on
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.dotfiles/scripts/bin:$HOME/.dotfiles/nvim/bundle/vim-superman/bin:$HOME/.rvm/bin:${GOPATH//://bin:}/bin:$HOME/.local/bin:$HOME/bin"
+export PATH="$PATH:$HOME/.dotfiles/scripts/bin:$HOME/.dotfiles/nvim/bundle/vim-superman/bin:$HOME/.rvm/bin:${GOPATH//://bin:}/bin"
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
@@ -175,9 +169,6 @@ export PATH="$PATH:$HOME/.dotfiles/scripts/bin:$HOME/.dotfiles/nvim/bundle/vim-s
 export NVM_DIR="$HOME/.config"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-nvm use --delete-prefix default
-
-export S2I_CONTAINER_MANAGER="buildah"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/shahein/.sdkman"
@@ -186,6 +177,3 @@ export SDKMAN_DIR="/home/shahein/.sdkman"
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [[ -f /home/shahein/.config/versions/node/v11.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /home/shahein/.config/versions/node/v11.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
