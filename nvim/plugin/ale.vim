@@ -1,10 +1,11 @@
+let b:ale_linter_aliases = ['javascript', 'vue']
 let g:ale_linters = {
 \   'javascript': ['eslint', 'flow'],
 \   'html': ['tidy'],
 \   'python': ['flake8', 'pylint'],
 \   'java': ['checkstyle', 'javac'],
 \   'go': ['golint'],
-\   'vue': ['eslint']
+\   'vue': ['eslint', 'vls']
 \}
 
 let g:ale_fixers = {

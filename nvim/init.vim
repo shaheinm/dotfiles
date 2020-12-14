@@ -1,8 +1,8 @@
-" Section: General Config {{{1
+" Section: General Config
 " ----------------------------
 let mapleader = " "
 
-set shell=zsh " Set bash as the prompt for Vim
+set shell=bash
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
 set nowritebackup
@@ -42,15 +42,16 @@ set incsearch
 set undofile
 set undodir=~/.config/nvim/undo
 
-" Open new split panes to right and bottom, which feels more natural {{{2
+" Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
-" Point python checker to homebrew installs` {{{2
+
+" Point python checker to homebrew installs`
 let g:python3_host_prog = '/usr/bin/python3'
 let g:python_host_prog = '/usr/bin/python2'
-" }}}2
+"
 
-" Configure grep to use The Silver Searcher {{{2
+" Configure grep to use The Silver Searcher
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -59,25 +60,25 @@ if executable('ag')
 
   command! -bang -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 endif
-" }}}2
-" Configure fzf in vim {{{2
+"
+" Configure fzf in vim
 let g:rg_command = 'rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always" -g "!{.git,node_modules}" -g "*.{js,json,md,config,py,cpp,c,go,conf}" '
 
 command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
-" }}}2
-" }}}1
-" Section: Autocommands {{{1
+"
+"
+" Section: Autocommands
 " --------------------------
 if has("autocmd")
   filetype plugin indent on
 
-  autocmd BufReadPost * " {{{2
+  autocmd BufReadPost * "
     " When editing a file, always jump to the last known cursor position.
     " Don't do it for commit messages, when the position is invalid, or when
     " inside an event handler (happens when dropping a file on gvim).
     \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
-    \ endif "}}}2
+    \ endif "
 
   " Automatically clean trailing whitespace
   autocmd BufWritePre * :%s/\s\+$//e
@@ -92,50 +93,42 @@ if has("autocmd")
   autocmd BufRead,BufNewFile gitconfig set ft=.gitconfig
 
 endif
-" }}}1
-" Section: External Functions {{{
+"
+" Section: External Functions
 
-" Open current file in Marked {{{
+" Open current file in Marked
 function! MarkedPreview()
   :w
   exec ':silent !open -a "Marked 2.app" ' . shellescape('%:p')
   redraw!
 endfunction
 nnoremap <leader>md :call MarkedPreview()<CR>
-" }}}
-" Open current file in Sublime {{{
-function! SublimeText()
-    :w
-    exec ':silent !open -a "Sublime Text.app" ' . shellescape('%:p')
-    redraw!
-endfunction
-nnoremap <leader>sb :call SublimeText()<CR>
-" }}}
-" Open current file in Chrome {{{
+"
+" Open current file in Chrome
 function! OpenInChrome()
   exec ':silent !open -a /Applications/Google\ Chrome.app %'
 endfunction
 nnoremap <leader>ch :call OpenInChrome()<CR>
-" }}}
-" }}}
-" Section: Load vim-plug plugins {{{
+"
+"
+" Section: Load vim-plug plugins
 
-" Specify plugins {{{2
+" Specify plugins
 call plug#begin()
 
-" UI {{{3
+" UI
 Plug 'shaheinm/vim-deus'
 Plug 'fenetikm/falcon'
+Plug 'morhetz/gruvbox'
 Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline'            " Handy info
 Plug 'vim-airline/vim-airline-themes'            " Handy info
 Plug 'retorillo/airline-tablemode.vim'
 Plug 'ryanoasis/vim-webdevicons'
-Plug 'junegunn/goyo.vim'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'jez/vim-superman'                   " Man pages in Vim
 
-" Project Navigation {{{3
+" Project Navigation
 Plug 'junegunn/fzf',                      { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-grepper'
@@ -145,7 +138,7 @@ Plug 'vim-scripts/ctags.vim'              " ctags related stuff
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'
 
-" File Navigation {{{3
+" File Navigation
 Plug 'vim-scripts/matchit.zip'            " More powerful % matching
 Plug 'easymotion/vim-easymotion'            " Move like the wind!
 Plug 'jeffkreeftmeijer/vim-numbertoggle'  " Smarter line numbers
@@ -153,7 +146,7 @@ Plug 'wellle/targets.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'haya14busa/incsearch.vim'           " Better search highlighting
 
-" Editing {{{3
+" Editing
 Plug 'tpope/vim-surround'                 " Change word surroundings
 Plug 'tpope/vim-commentary'               " Comments stuff
 Plug 'tpope/vim-repeat'
@@ -174,72 +167,68 @@ Plug 'jez/vim-github-hub'
 
 " Task Running
 Plug 'tpope/vim-dispatch'                 " Run tasks asychronously in Tmux
-Plug 'w0rp/ale'                           " Linter
+Plug 'dense-analysis/ale'                           " Linter
 Plug 'wincent/terminus'
 Plug 'Olical/vim-enmasse'                 " Edit all files in a Quickfix list
 Plug 'janko-m/vim-test'
 
-" Autocomplete {{{3
-Plug 'Shougo/deoplete.nvim',              { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
-Plug 'carlitux/deoplete-ternjs'
-Plug 'steelsojka/deoplete-flow'
+" Autocomplete
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " Productivity
 Plug 'git://github.com/wakatime/vim-wakatime.git'
-Plug 'SirVer/ultisnips'
 
-" Language Support {{{3
-" JavaScript {{{4
+" Language Support
+" JavaScript
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'posva/vim-vue'
 Plug 'rhysd/npm-debug-log.vim'
+Plug 'martinda/Jenkinsfile-vim-syntax'
 
-" Handlebars {{{4
+" Handlebars
 Plug 'mustache/vim-mustache-handlebars'
 
-" HTML {{{4
+" HTML
 Plug 'othree/html5.vim',                  { 'for': 'html' }
 Plug 'mattn/emmet-vim'
 
-" CSS {{{4
+" CSS
 Plug 'hail2u/vim-css3-syntax',            { 'for': 'css' }
 
-" Sass {{{4
+" Sass
 Plug 'cakebaker/scss-syntax.vim'
 
-" Python {{{4
+" Python
 Plug 'klen/python-mode',                  { 'for': 'python' }
 Plug 'davidhalter/jedi-vim',              { 'for': 'python' }
 Plug 'alfredodeza/pytest.vim',            { 'for': 'python' }
 
-" Go {{{4
+" Go
 Plug 'fatih/vim-go',                      { 'do': ':GoUpdateBinaries' }
 Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-Plug 'zchee/deoplete-go',                 { 'do': 'make'}
 
-" Markdown {{{4
+" Markdown
 Plug 'reedes/vim-pencil'                  " Markdown, Writing
 Plug 'godlygeek/tabular',                 { 'for': 'markdown' } " Needed for vim-markdown
 Plug 'plasticboy/vim-markdown',           { 'for': 'markdown' }
 
-" Java {{{4
+" Java
 Plug 'artur-shaik/vim-javacomplete2'
 
-" GraphQL {{{4
+" GraphQL
 Plug 'jparise/vim-graphql'
 
 call plug#end()
 
-" Load plugin configurations {{{2
+" Load plugin configurations
 " For some reason, a few plugins seem to have config options that cannot be
 " placed in the `plugins` directory. Those settings can be found here instead.
 
-" vim-airline {{{3
+" vim-airline
 let g:airline_powerline_fonts = 1 " Enable the patched Powerline fonts
 
-" emmet-vim {{{3
+" emmet-vim
 let g:user_emmet_leader_key='<C-E>'
 
 let g:user_emmet_settings = {
@@ -249,7 +238,7 @@ let g:user_emmet_settings = {
   \}
 
 
-" vim-javacomplete2 {{{3
+" vim-javacomplete2
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
 imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
@@ -259,12 +248,12 @@ nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
 imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
 nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-let g:JavaComplete_ClasspathGenerationOrder = ['Maven', 'Gradle']
-" }}}3
+let g:JavaComplete_ClasspathGenerationOrder = ['Maven']
+"
 
-" Section: Remaps {{{1
+" Section: Remaps
 
-" Normal Mode Remaps {{{2
+" Normal Mode Remaps
 
 " Quickly find file in NERDTree
 nnoremap <leader>f :NERDTreeFind<CR>
@@ -309,7 +298,7 @@ nnoremap tn :tabnew<CR>
 nnoremap tc :CtrlSpaceTabLabel<CR>
 nnoremap td :tabclose<CR>
 
-" EasyMotion config {{{3
+" EasyMotion config
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
@@ -326,37 +315,39 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
-" }}}3
-" }}}2
-" Insert Mode Remaps {{{2
+"
+"
+" Insert Mode Remaps
 
 set completeopt-=preview
 
-" }}}2
-" }}}1
-" Section: Theme {{{
+"
+"
+" Section: Theme
 
 syntax enable
+let g:gruvbox_italic=1
+let g:gruvbox_contrast_dark="hard"
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set t_Co=256
 set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set background=dark
-colorscheme deus
+colorscheme gruvbox
 let g:deus_termcolors=256
 
 hi Folded ctermbg=NONE guibg=NONE ctermfg=014 guifg=#0087d7
 " Airline theme
 let g:falcon_airline=1
-let g:airline_theme='falcon'
+let g:airline_theme='badwolf'
 
-" Section: Local-Machine Config {{{
+" Section: Local-Machine Config
 
 if filereadable($DOTFILES . "/nvim/init.local.vim")
   source $DOTFILES/nvim/init.local.vim
 endif
-" }}}
+"
 
 set fillchars+=vert:\.
 
