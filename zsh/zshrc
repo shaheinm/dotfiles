@@ -19,7 +19,7 @@ ZSH_CUSTOM="$DOTFILES/zsh/custom"
 fpath=( "$DOTFILES/zsh/custom" $fpath)
 
 # -- Theme ---------------------------------------------------------------------
-ZSH_THEME=""
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # -- ZSH Plugins ---------------------------------------------------------------
 plugins=(
@@ -34,11 +34,10 @@ fpath=($DOTFILES/zsh/custom/completion $fpath)
 source $ZSH/oh-my-zsh.sh
 
 # -- Load Pure Prompt ----------------------------------------------------------
-export PURE_PROMPT_SYMBOL='$'
-export PURE_PROMPT_PRE='%F{73}'
-autoload -U promptinit; promptinit
-prompt pure
-source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+#export PURE_PROMPT_SYMBOL='$'
+#export PURE_PROMPT_PRE='%F{73}shahein at zsh '
+#autoload -U promptinit; promptinit
+#prompt pure
 
 # -- Named Directories ---------------------------------------------------------
 unsetopt auto_name_dirs
@@ -53,14 +52,6 @@ export SAVEHIST=500
 # -- Options -------------------------------------------------------------------
 unsetopt correct_all
 unsetopt correct
-
-# -- Kube-PS1 ------------------------------------------------------------------
-export KUBE_PS1_PREFIX='{{'
-export KUBE_PS1_SUFFIX='}}'
-export KUBE_PS1_DIVIDER='.'
-export KUBE_PS1_SYMBOL_ENABLE="false"
-export KUBE_PS1_CTX_COLOR='144'
-export KUBE_PS1_NS_COLOR='65'
 
 # -- Variables -----------------------------------------------------------------
 alias vim=nvim
@@ -138,15 +129,6 @@ if [ -f ~/.fzf.zsh ]; then
   bindkey '^g^t' fzf-gt-widget
 fi
 
-# -- OS-Specific Config --------------------------------------------------------
-if [[ $(uname) == 'Darwin' ]]; then
-  # Load OSX config
-  source $DOTFILES/zsh/zshrc.osx
-elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
-  # Load Linux config
-  source $DOTFILES/zsh/zshrc.linux
-fi
-
 # -- asdf ---------------------------------------------------------------------
 if [[ -d "$HOME/.asdf" ]]; then
   source $HOME/.asdf/asdf.sh
@@ -162,9 +144,6 @@ fi
 if [[ -f "$HOME/.kubecontexts" ]]; then
   source $HOME/.kubecontexts
 fi
-
-# -- jEnv ----------------------------------------------------------------------
-eval "$(jenv init -)"
 
 # -- Local Configuration (After Default) ---------------------------------------
 if [[ -f "$DOTFILES/zsh/zshrc.local" ]]; then

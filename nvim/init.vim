@@ -227,6 +227,9 @@ Plug 'plasticboy/vim-markdown',           { 'for': 'markdown' }
 " Java {{{4
 Plug 'artur-shaik/vim-javacomplete2'
 
+" GraphQL {{{4
+Plug 'jparise/vim-graphql'
+
 call plug#end()
 
 " Load plugin configurations {{{2
@@ -256,7 +259,7 @@ nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
 imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
 nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-let g:JavaComplete_ClasspathGenerationOrder = ['Maven']
+let g:JavaComplete_ClasspathGenerationOrder = ['Maven', 'Gradle']
 " }}}3
 
 " Section: Remaps {{{1
@@ -340,7 +343,7 @@ set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set background=dark
-colorscheme falcon
+colorscheme deus
 let g:deus_termcolors=256
 
 hi Folded ctermbg=NONE guibg=NONE ctermfg=014 guifg=#0087d7
