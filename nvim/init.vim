@@ -176,7 +176,7 @@ Plug 'janko-m/vim-test'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " Productivity
-Plug 'git://github.com/wakatime/vim-wakatime.git'
+Plug 'wakatime/vim-wakatime'
 
 " Language Support
 " JavaScript
